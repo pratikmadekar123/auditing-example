@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4' apply false // apply false avoids applying bootJar
+      
+}
+
+group = 'com.jtd'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Add Spring Web if using RestTemplate
+    implementation 'org.springframework:spring-web:6.1.4'
+    
+    // Optional: Spring Boot if needed
+  implementation 'org.springframework:spring-context:6.1.4'
+    implementation 'org.springframework:spring-web:6.1.4'
+implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer:3.1.1'
+
+}
+
+tasks.withType(Jar).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+
+
+jar {
+    enabled = true
+    archiveBaseName.set('common-logger')
+    archiveVersion.set(version)
+    from sourceSets.main.output
+
+    doFirst {
+        println "Included class files:"
+        sourceSets.main.output.classesDirs.each {
+            println " - ${it}"
+        }
+    }
+}
