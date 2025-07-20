@@ -56,6 +56,26 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+  			<groupId>local.libs</groupId>
+  			<artifactId>common-logger-1.0.0</artifactId>
+  			<version>1.0.0</version>
+  			<scope>system</scope>
+  			<systemPath>${project.basedir}/libs/common-logger-1.0.0.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
