@@ -32,12 +32,11 @@ public class InventoryConsumer {
 				.orElse("UNKNOWN");
 
 		MDC.put("X-Request-Id", requestId);
-		log.info("X-Request-Id====>"+requestId);
-		auditLogger.log("inventory-service", "InventoryConsumer.consumeOrder", requestId, "RECEIVED",record.value());
+		auditLogger.log("inventory-service", "InventoryConsumer.consumeOrder", 	MDC.get("X-Request-Id"), "RECEIVED",record.value());
 		try {
 			// Log the requestId and message
 
-			auditLogger.log("inventory-service", "InventoryConsumer.consumeOrder", requestId, "RECEIVED", record.value());
+			auditLogger.log("inventory-service", "InventoryConsumer.consumeOrder", 	MDC.get("X-Request-Id"), "RECEIVED", record.value());
 			// Your business logic here
 			String message = record.value();
 			// deserialize message if it's a JSON, etc.
