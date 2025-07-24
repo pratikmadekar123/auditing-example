@@ -76,6 +76,11 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--<dependency>
+    		<groupId>com.in.audit</groupId>
+    		<artifactId>common-auditing</artifactId>
+   		   <version>1.0</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>

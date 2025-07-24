@@ -69,6 +69,11 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		<dependency>
+    		<groupId>com.in.audit</groupId>
+    		<artifactId>common-auditing</artifactId>
+   		   <version>1.0</version>
+		</dependency-->
 		<dependency>
   			<groupId>local.libs</groupId>
   			<artifactId>common-logger-1.0.0</artifactId>
@@ -76,6 +81,7 @@
   			<scope>system</scope>
   			<systemPath>${project.basedir}/libs/common-logger-1.0.0.jar</systemPath>
 		</dependency>
+		
 	</dependencies>
 
 	<build>

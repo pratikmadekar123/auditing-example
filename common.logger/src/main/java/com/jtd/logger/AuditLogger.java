@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,7 @@ public class AuditLogger {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	//private static String requestId1 = UUID.randomUUID().toString();
 	//private final String AUDIT_SERVICE_URL = "http://audit-logging-service/audit/log";
 
 	public void log(String service, String method, String requestId, String status, String error) {

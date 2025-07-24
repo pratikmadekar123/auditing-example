@@ -1,0 +1,24 @@
+<configuration>
+    <!-- Default values -->
+    <property name="AUDIT_LOG_DIR" value="${audit.log.dir:-./logs}"/>
+    <property name="SERVICE_NAME" value="${spring.application.name:-${audit.service.name:-default-service}}"/>
+    <property name="LOG_PATTERN" value="${audit.log.pattern:-%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | [%thread] | %logger{36} | [%property{SERVICE_NAME}] | %msg%n}"/>
+    
+    <!-- File Appender -->
+    <appender name="AUDIT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${AUDIT_LOG_DIR}/audit-${SERVICE_NAME}.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${AUDIT_LOG_DIR}/archived/audit-${SERVICE_NAME}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Logger Configuration -->
+    <logger name="AUDIT_LOGGER_${SERVICE_NAME}" level="INFO" additivity="false">
+        <appender-ref ref="AUDIT_FILE"/>
+    </logger>
+</configuration>
