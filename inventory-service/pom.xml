@@ -81,7 +81,20 @@
   			<scope>system</scope>
   			<systemPath>${project.basedir}/libs/common-logger-1.0.0.jar</systemPath>
 		</dependency>
-		
+		<dependency>
+    <groupId>net.logstash.logback</groupId>
+    <artifactId>logstash-logback-encoder</artifactId>
+    <version>8.1</version>
+</dependency>
+  		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-actuator</artifactId>
+  		</dependency>
+  		<dependency>
+    		<groupId>org.elasticsearch.client</groupId>
+		    <artifactId>elasticsearch-rest-high-level-client</artifactId>
+    		<version>7.17.0</version>
+  		</dependency>
 	</dependencies>
 
 	<build>

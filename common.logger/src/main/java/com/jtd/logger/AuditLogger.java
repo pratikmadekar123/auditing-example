@@ -58,7 +58,7 @@ public class AuditLogger {
             File dir = new File(basePath + "/logs");
             if (!dir.exists()) dir.mkdirs();
 
-            String filename = basePath + "/logs/audit-log"+".log";
+            String filename = basePath + "/logs/audit-log-"+log.getService()+".log";
 
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
