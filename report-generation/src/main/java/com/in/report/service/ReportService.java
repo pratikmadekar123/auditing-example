@@ -51,16 +51,12 @@ public class ReportService {
 	private DataSource dataSource;
 
 	public byte[] generateEmployeeReport() throws JRException, SQLException {
-		// Load .jrxml or compiled .jasper file
-		  System.out.println("inside service.getEmployeeReport() ");
-		InputStream reportStream = getClass().getResourceAsStream("/reports/empReport.jrxml");
-		  System.out.println("Controller.getEmployeeReport() location found");
+		// Load .jrxml or compiled .jasper file	
+		InputStream reportStream = getClass().getResourceAsStream("/reports/salreport.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
-		  System.out.println("Controller.getEmployeeReport() repor compiled");
 		// Fill report using DB connection
 		try (Connection conn = dataSource.getConnection()) {
 			JasperPrint print = JasperFillManager.fillReport(jasperReport, new HashMap<>(), conn);
-			  System.out.println("Controller.getEmployeeReport() fillReport");
 			return JasperExportManager.exportReportToPdf(print); // PDF byte[]
 		}
 	}

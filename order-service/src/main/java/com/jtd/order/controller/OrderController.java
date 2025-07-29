@@ -33,14 +33,14 @@ public class OrderController {
 	@PostMapping
 	public String placeOrder(@RequestBody String order) {
 		//String requestId = UUID.randomUUID().toString();
-			auditLogger.log("order-service", "OrderController.placeOrder", MDC.get("X-Request-Id"), "STARTED", "Inside placeOrder");
+		auditLogger.log("order-service", "OrderController.placeOrder", MDC.get("X-Request-Id"), "STARTED", "Inside placeOrder");
 		//auditLogger.info("inside placeOrder");
 		try {
 			System.out.println("gggggggg=>"+MDC.get("X-Request-Id").getBytes(StandardCharsets.UTF_8));
 			ProducerRecord<String, String> record = new ProducerRecord<>(orderCreatedTopic, "1234", order.toString());
-			
+
 			//auditLogger.log("order-service", "OrderController.placeOrder", record.headers().lastHeader("X-Request-Id").toString(), "SUCCESScsacac", "Exits");
-			
+
 			record.headers().add("X-Request-Id", MDC.get("X-Request-Id").getBytes(StandardCharsets.UTF_8));
 			kafkaTemplate.send(record);
 			auditLogger.log("order-service", "OrderController.placeOrder", MDC.get("X-Request-Id"), "SUCCESS", "Exits");
@@ -58,9 +58,10 @@ public class OrderController {
 		auditLogger.log("order-service", "OrderController.getOrder", MDC.get("X-Request-Id"), "STARTED", "Inside placeOrder");
 		//auditLogger.info("inside getOrder");
 		try {
-			
+
 			servcie.serviceMethod();
 			//	auditLogger.info("Order Received");
+
 			auditLogger.log("order-service", "OrderController.getOrder", MDC.get("X-Request-Id"), "SUCCESS", "logged Successfully");
 			return "Order Received";
 		} catch (Exception e) {

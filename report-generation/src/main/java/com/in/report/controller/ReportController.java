@@ -2,6 +2,8 @@ package com.in.report.controller;
 
 import java.io.IOException;
 
+import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.in.report.ReportGenerationApplication;
 import com.in.report.dto.ReportRequest;
 import com.in.report.service.ReportService;
+import com.jtd.logger.AuditLogger;
 
 @CrossOrigin("*")
 @RestController
@@ -24,10 +27,14 @@ public class ReportController {
     private final ReportGenerationApplication reportGenerationApplication;
 
 	private final ReportService reportService;
+	
+	private  AuditLogger auditLogger;
+	
 
-	public ReportController(ReportService reportService, ReportGenerationApplication reportGenerationApplication) {
+	public ReportController(ReportService reportService, ReportGenerationApplication reportGenerationApplication, AuditLogger auditLogger) {
 		this.reportService = reportService;
 		this.reportGenerationApplication = reportGenerationApplication;
+		this.auditLogger =auditLogger;
 	}
 	@PostMapping("/amlock")
 	public ResponseEntity<byte[]> generateAmlockReport(@RequestBody ReportRequest request) {
@@ -53,6 +60,8 @@ public class ReportController {
 
 	@GetMapping(value = "/employee", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> getEmployeeReport() throws Exception {
+    	
+    	auditLogger.log("report-service", "ReportGeneration.getEmployeeReport", MDC.get("X-Request-Id"), null, "Inside getEmployee()");
     	System.out.println("inside getEmployeeReport()");
         byte[] pdfBytes = reportService.generateEmployeeReport();
         System.out.println("Controller.getEmployeeReport() byte generated");

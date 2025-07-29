@@ -22,6 +22,7 @@
 	</developers>
 	<properties>
 		<java.version>17</java.version>
+		<spring-cloud.version>2025.0.0</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -70,11 +71,11 @@
   			 <version>6.7.0</version>
 		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
-<dependency>
-    <groupId>net.sf.jasperreports</groupId>
-    <artifactId>jasperreports</artifactId>
-    <version>7.0.3</version>
-</dependency>
+		<dependency>
+ 		   <groupId>net.sf.jasperreports</groupId>
+ 		   <artifactId>jasperreports</artifactId>
+ 		   <version>7.0.3</version>
+		</dependency>
  
 		<dependency>
    			 <groupId>org.springframework.boot</groupId>
@@ -125,14 +126,43 @@
     <!-- JasperReports Export -->
    
  
-<!-- For working with data sources like JDBC -->
-<dependency>
-    <groupId>com.github.librepdf</groupId>
-    <artifactId>openpdf</artifactId>
-    <version>1.3.26</version> <!-- Or latest -->
-</dependency>
+	<!-- For working with data sources like JDBC -->
+	<dependency>
+ 	   <groupId>com.github.librepdf</groupId>
+  	  <artifactId>openpdf</artifactId>
+  	  <version>1.3.26</version> <!-- Or latest -->
+	</dependency>
+	<dependency>
+  			<groupId>local.libs</groupId>
+  			<artifactId>common-logger-1.0.0</artifactId>
+  			<version>1.0.0</version>
+  			<scope>system</scope>
+  			<systemPath>${project.basedir}/libs/common-logger-1.0.0.jar</systemPath>
+	</dependency>
 
-
+	<!--ELK -->
+	<dependency>
+  	 	 <groupId>net.logstash.logback</groupId>
+  	 	 <artifactId>logstash-logback-encoder</artifactId>
+   		 <version>8.1</version>
+	</dependency>
+  	<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-actuator</artifactId>
+  	</dependency>
+  	<dependency>
+    		<groupId>org.elasticsearch.client</groupId>
+		    <artifactId>elasticsearch-rest-high-level-client</artifactId>
+    		<version>7.17.0</version>
+  	</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -164,4 +194,21 @@
 		</plugins>
 	</build>
 
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
