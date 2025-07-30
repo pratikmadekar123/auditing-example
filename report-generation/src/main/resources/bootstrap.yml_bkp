@@ -1,0 +1,55 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: report-generation
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    config:
+      enabled: true
+      label: master
+      
+      uri: http://localhost:8888
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-interval: 2000
+        multiplier: 1.5
+        max-attempts: 20
+      profile: dev
+#  datasource:
+#    url: jdbc:oracle:thin:@localhost:1521/XE
+#    username: C##REPORT_DB
+#    password: REPORT_DB
+#    driver-class-name: oracle.jdbc.OracleDriver
+#  jpa:
+#    database-platform: org.hibernate.dialect.Oracle12cDialect
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#server:
+#  port: 9099
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+common:
+  logger:
+    audit-service-url: http://AUDIT-LOGGING-SERVICE/audit/log
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: INFO
+    com:
+      order: DEBUG
+#  logstash:
+#    enabled: false
+#    host: localhost
+#    port: 5000

@@ -1,10 +1,10 @@
-package com.in.jasper;
+package com.in.cloud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JasperReportServiceApplicationTests {
+class CloudConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {

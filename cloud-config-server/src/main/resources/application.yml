@@ -1,0 +1,43 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+spring:
+  application:
+    name: cloud-config-server
+  profiles:
+    active: jdbc
+  cloud:
+    config:
+      server:
+        git:
+          enabled: false
+       
+        jdbc:
+          sql: SELECT KEY, VALUE from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+          order: 1
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: C##CONFIGDB
+    password: CONFIGDB
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+          dialect: org.hibernate.dialect.OracleDialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+

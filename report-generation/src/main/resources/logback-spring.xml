@@ -1,6 +1,6 @@
 <configuration>
 
-    <property name="LOG_PATH" value="D:/order-service" />
+    <property name="LOG_PATH" value="D:/report-service" />
     <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
 	
 	
@@ -32,8 +32,8 @@
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE" />
     </root>
-    <root level="INFO">
+<!--    <root level="INFO">
     	<appender-ref ref="LOGSTASH" />
 	</root>
-
+-->
 </configuration>
