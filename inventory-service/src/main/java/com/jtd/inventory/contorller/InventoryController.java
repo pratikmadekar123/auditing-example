@@ -1,4 +1,4 @@
-package com.jtd.inventory.service;
+package com.jtd.inventory.contorller;
 
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;

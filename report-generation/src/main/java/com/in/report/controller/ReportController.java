@@ -24,7 +24,7 @@ import com.jtd.logger.AuditLogger;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/reports")
+@RequestMapping("/reports")
 public class ReportController {
 
 	private final ReportGenerationApplication reportGenerationApplication;

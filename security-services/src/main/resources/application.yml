@@ -1,0 +1,25 @@
+server:
+  port: 9093
+  servlet:
+    context-path: /api/1.0
+
+
+spring:
+   application:
+       name: security-services
+   config:
+      import: optional:configserver:http://localhost:8888
+   profiles:
+     active: dev
+   cloud:
+     config:
+       enabled: true
+       label: master
+       uri: http://localhost:8888
+       fail-fast: true
+       retry:
+           initial-interval: 1000
+           max-interval: 2000
+           multiplier: 1.5
+           max-attempts: 20
+       profile: dev

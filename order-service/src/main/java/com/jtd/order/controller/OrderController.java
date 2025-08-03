@@ -7,6 +7,7 @@ import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jtd.logger.AuditLogger;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -30,7 +31,7 @@ public class OrderController {
 	@Value("${kafka.topic.order-created}")
 	private String orderCreatedTopic;
 
-	@PostMapping
+	@PostMapping("/place")
 	public String placeOrder(@RequestBody String order) {
 		//String requestId = UUID.randomUUID().toString();
 		auditLogger.log("order-service", "OrderController.placeOrder", MDC.get("X-Request-Id"), "STARTED", "Inside placeOrder");

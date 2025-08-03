@@ -1,20 +1,11 @@
 package com.in.report.config;
 
-import java.io.IOException;
-import java.util.UUID;
-
-import org.slf4j.MDC;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-@Component
-public class RequestIdFilter extends OncePerRequestFilter {
-
+public class RequestIdFilter{
+//@Component
+//public class RequestIdFilter extends OncePerRequestFilter {
+/*
     public static final String REQUEST_ID_HEADER = "X-Request-Id";
 
     @Override
@@ -40,4 +31,5 @@ public class RequestIdFilter extends OncePerRequestFilter {
             MDC.remove(REQUEST_ID_HEADER);
         }
     }
+    */
 }
