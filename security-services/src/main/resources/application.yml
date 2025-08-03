@@ -1,8 +1,12 @@
 server:
-  port: 9093
+#  port: 9093
   servlet:
     context-path: /api/1.0
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
 
 spring:
    application:
@@ -23,3 +27,9 @@ spring:
            multiplier: 1.5
            max-attempts: 20
        profile: dev
+   security:
+    user:
+      name: admin
+      password: secret123
+
+
