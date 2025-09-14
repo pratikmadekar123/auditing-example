@@ -31,7 +31,7 @@ public class ReportController {
 
 	private final ReportService reportService;
 
-@Autowired
+	@Autowired
 	private  AuditLogger auditLogger;
 
 	@Value("${example.message}")
@@ -80,6 +80,6 @@ public class ReportController {
 	@GetMapping("/config")
 	public String getConfig() throws SQLException {
 		return 	dbUsername;
-				
+
 	}
 }
